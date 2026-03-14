@@ -16,11 +16,11 @@
       <view class="card-content">
         <view class="info-item">
           <text class="info-label">版本号</text>
-          <text class="info-value">V1.0.1</text>
+          <text class="info-value">V1.0.2</text>
         </view>
         <view class="info-item">
           <text class="info-label">更新时间</text>
-          <text class="info-value">2026年3月</text>
+          <text class="info-value">2026年3月14日</text>
         </view>
         <view class="info-item">
           <text class="info-label">开发者</text>
