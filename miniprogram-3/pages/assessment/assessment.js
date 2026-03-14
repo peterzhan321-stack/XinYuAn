@@ -123,6 +123,7 @@ debugSubmit: function() {
       answers[q.id] = null;
     });
     this.setData({ answers });
+    console.log('🔧 初始化答案对象:', answers);
   },
 
   // 计算进度
@@ -150,6 +151,7 @@ debugSubmit: function() {
     });
     
     console.log(`✅ 记录答案: 题目${questionId} = ${answerValue}`);
+    console.log('📋 当前答案状态:', this.data.answers);
   },
 
   // 计算选项选中类
@@ -192,21 +194,39 @@ debugSubmit: function() {
   // 检查是否所有题目都已作答
   checkAllAnswered: function() {
     const answers = this.data.answers;
+    console.log('🔍 检查所有题目是否已作答:', answers);
+    
+    // 检查answers对象是否存在
+    if (!answers) {
+      console.log('❌ answers对象不存在');
+      return false;
+    }
+    
     for (let i = 0; i < this.data.questionSet.length; i++) {
       const questionId = this.data.questionSet[i].id;
-      if (answers[questionId] === null || answers[questionId] === undefined) {
+      // 尝试两种键类型：数字和字符串
+      let answerValue = answers[questionId];
+      if (answerValue === null || answerValue === undefined) {
+        answerValue = answers[questionId.toString()];
+      }
+      console.log(`🔍 检查题目${questionId}，答案值:`, answerValue);
+      if (answerValue === null || answerValue === undefined) {
+        console.log(`❌ 题目${questionId}未作答`);
         return false;
       }
     }
+    console.log('✅ 所有题目都已作答');
     return true;
   },
 
   // 提交测评
   submitAssessment: function() {
+    console.log('🚀 submitAssessment函数被调用');
     const that = this;
     
     // 检查是否所有题目都已作答
     if (!this.checkAllAnswered()) {
+      console.log('❌ 有题目未完成，显示提示');
       wx.showModal({
         title: '⚠️ 提示',
         content: '您还有题目未完成，请先完成所有题目再提交。',
@@ -217,33 +237,29 @@ debugSubmit: function() {
       return;
     }
     
-    wx.showModal({
-      title: '确认提交',
-      content: '确认要提交测评吗？提交后将无法修改答案。',
-      confirmText: '确认提交',
-      cancelText: '再检查一下',
-      confirmColor: '#2ecc71',
-      cancelColor: '#7f8c8d',
-      success: function(res) {
-        if (res.confirm) {
-          that.processSubmission();
-        }
-      }
-    });
+    console.log('✅ 所有题目已完成，显示确认弹窗');
+    // 直接调用processSubmission，跳过弹窗
+    console.log('✅ 跳过确认弹窗，直接调用processSubmission');
+    that.processSubmission();
   },
 
   // 处理提交逻辑
   processSubmission: function() {
+    console.log('📋 processSubmission函数被调用');
     const that = this;
     
+    console.log('🔄 显示加载中');
     wx.showLoading({
       title: '分析中...',
       mask: true
     });
     
     // 模拟网络请求延迟
-    setTimeout(() => {
+    console.log('⏰ 设置setTimeout');
+    setTimeout(function() {
+      console.log('⏰ setTimeout回调执行');
       wx.hideLoading();
+      console.log('🔄 隐藏加载中');
       
       // 计算分数
       const scores = { 
@@ -254,9 +270,12 @@ debugSubmit: function() {
       };
       
       let totalScore = 0;
+      console.log('🔢 计算分数，答案:', that.data.answers);
       Object.values(that.data.answers).forEach(function(answer) {
+        console.log('🔢 处理答案:', answer, '得分:', scores[answer] || 0);
         totalScore += scores[answer] || 0;
       });
+      console.log('🔢 总得分:', totalScore);
       
       // 计算等级和建议
       let level = '';
@@ -275,6 +294,8 @@ debugSubmit: function() {
         level = '重度抑郁';
         suggestion = '强烈建议立即寻求专业心理治疗，您也可以联系学校的心理健康中心。';
       }
+      
+      console.log('🏆 评估等级:', level);
       
       // 计算等级徽章类名
       let levelBadgeClass = '';
@@ -295,6 +316,9 @@ debugSubmit: function() {
         explanationText = '15-27分：重度抑郁，建议立即寻求专业帮助';
       }
       
+      console.log('📝 准备设置结果数据');
+      console.log('🔧 设置前isSubmitted:', that.data.isSubmitted);
+      
       // 设置结果
       that.setData({
         isSubmitted: true,
@@ -306,16 +330,22 @@ debugSubmit: function() {
         },
         levelBadgeClass: levelBadgeClass,
         explanationText: explanationText
-      });
-      
-      // 保存到历史记录
-      that.saveToHistory();
-      
-      // 显示结果提示
-      wx.showToast({
-        title: '测评完成',
-        icon: 'success',
-        duration: 2000
+      }, function() {
+        console.log('✅ setData回调执行');
+        console.log('🔧 设置后isSubmitted:', that.data.isSubmitted);
+        console.log('📊 设置后result:', that.data.result);
+        
+        // 保存到历史记录
+        console.log('💾 保存到历史记录');
+        that.saveToHistory();
+        
+        // 显示结果提示
+        console.log('🎉 显示测评完成提示');
+        wx.showToast({
+          title: '测评完成',
+          icon: 'success',
+          duration: 2000
+        });
       });
       
     }, 1500);
