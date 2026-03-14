@@ -1,0 +1,111 @@
+<view class="body-scan-container">
+  <view class="header">
+    <view class="title-section">
+      <text class="main-title">身体扫描</text>
+      <text class="sub-title">关注身体感受，缓解紧张</text>
+    </view>
+    <view class="close-btn" bindtap="goBack">
+      <text>×</text>
+    </view>
+  </view>
+
+  <view class="main-content">
+    <view class="visualization">
+      <view class="body-diagram">
+        <view class="body-area {{currentArea === 'head' ? 'active' : ''}}" style="top: 10%; left: 45%;">
+          <text class="area-label">头部</text>
+        </view>
+        <view class="body-area {{currentArea === 'neck' ? 'active' : ''}}" style="top: 20%; left: 45%;">
+          <text class="area-label">颈部</text>
+        </view>
+        <view class="body-area {{currentArea === 'shoulders' ? 'active' : ''}}" style="top: 25%; left: 35%;">
+          <text class="area-label">肩膀</text>
+        </view>
+        <view class="body-area {{currentArea === 'shoulders' ? 'active' : ''}}" style="top: 25%; left: 55%;">
+          <text class="area-label">肩膀</text>
+        </view>
+        <view class="body-area {{currentArea === 'arms' ? 'active' : ''}}" style="top: 35%; left: 30%;">
+          <text class="area-label">手臂</text>
+        </view>
+        <view class="body-area {{currentArea === 'arms' ? 'active' : ''}}" style="top: 35%; left: 60%;">
+          <text class="area-label">手臂</text>
+        </view>
+        <view class="body-area {{currentArea === 'chest' ? 'active' : ''}}" style="top: 30%; left: 45%;">
+          <text class="area-label">胸部</text>
+        </view>
+        <view class="body-area {{currentArea === 'abdomen' ? 'active' : ''}}" style="top: 40%; left: 45%;">
+          <text class="area-label">腹部</text>
+        </view>
+        <view class="body-area {{currentArea === 'back' ? 'active' : ''}}" style="top: 45%; left: 45%;">
+          <text class="area-label">背部</text>
+        </view>
+        <view class="body-area {{currentArea === 'legs' ? 'active' : ''}}" style="top: 55%; left: 40%;">
+          <text class="area-label">腿部</text>
+        </view>
+        <view class="body-area {{currentArea === 'legs' ? 'active' : ''}}" style="top: 55%; left: 50%;">
+          <text class="area-label">腿部</text>
+        </view>
+        <view class="body-area {{currentArea === 'feet' ? 'active' : ''}}" style="top: 70%; left: 40%;">
+          <text class="area-label">脚部</text>
+        </view>
+        <view class="body-area {{currentArea === 'feet' ? 'active' : ''}}" style="top: 70%; left: 50%;">
+          <text class="area-label">脚部</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="instruction-section">
+      <text class="instruction-text">{{instructionText}}</text>
+    </view>
+
+    <view class="stats-section">
+      <view class="stat-item">
+        <text class="stat-label">练习时间</text>
+        <text class="stat-value">{{formatTime(elapsedTime)}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">当前部位</text>
+        <text class="stat-value">{{currentAreaName}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">进度</text>
+        <text class="stat-value">{{progress}}%</text>
+      </view>
+    </view>
+
+    <view class="controls-section">
+      <view class="control-buttons">
+        <view class="button-group">
+          <view class="control-button start-button {{isActive ? 'pause' : 'start'}}" bindtap="togglePractice">
+            <text>{{isActive ? '暂停练习' : '开始练习'}}</text>
+          </view>
+          <view class="control-button reset-button" bindtap="resetPractice">
+            <text>重新开始</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="guide-section">
+      <text class="guide-title">练习指南</text>
+      <view class="guide-list">
+        <view class="guide-item">
+          <text class="guide-number">1</text>
+          <text class="guide-text">平躺或坐姿，保持身体放松</text>
+        </view>
+        <view class="guide-item">
+          <text class="guide-number">2</text>
+          <text class="guide-text">从头顶开始，逐步扫描到脚趾</text>
+        </view>
+        <view class="guide-item">
+          <text class="guide-number">3</text>
+          <text class="guide-text">感受每个部位的感觉，不评判，只是观察</text>
+        </view>
+        <view class="guide-item">
+          <text class="guide-number">4</text>
+          <text class="guide-text">如果走神，温和地将注意力带回身体</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

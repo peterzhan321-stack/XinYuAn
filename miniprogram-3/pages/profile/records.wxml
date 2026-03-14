@@ -1,0 +1,55 @@
+<view style="padding: 20rpx; min-height: 100vh; background-color: #f5f7fa">
+  <view style="background: white; padding: 20rpx; border-radius: 10rpx; margin-bottom: 20rpx">
+    <input 
+      placeholder="搜索记录内容..." 
+      bindinput="onSearchInput" 
+      bindconfirm="onSearchConfirm" 
+      value="{{searchKeyword}}"
+      style="width: 100%; height: 80rpx; background: #f8f9fa; border-radius: 40rpx; padding: 0 20rpx; font-size: 28rpx"
+    />
+  </view>
+
+  <scroll-view style="height: 80vh" scroll-y>
+    <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20rpx; padding: 0 10rpx">
+      <text style="font-size: 28rpx; color: #666">共 {{filteredRecords.length}} 条记录</text>
+      <view>
+        <button style="background: #4A90E2; color: white; font-size: 24rpx; padding: 0 15rpx; height: 40rpx; line-height: 40rpx; margin-right: 10rpx" bindtap="exportRecords" size="mini">导出</button>
+        <button style="background: #ff4444; color: white; font-size: 24rpx; padding: 0 15rpx; height: 40rpx; line-height: 40rpx" bindtap="clearRecords" size="mini">清空</button>
+      </view>
+    </view>
+
+    <block wx:for="{{records}}" wx:key="id">
+      <view style="background: white; border-radius: 10rpx; padding: 20rpx; margin-bottom: 15rpx; border: 1rpx solid #eee" bindtap="viewDetail" data-index="{{index}}">
+        <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10rpx">
+          <view style="background: #4A90E2; color: white; padding: 5rpx 15rpx; border-radius: 15rpx; font-size: 24rpx">{{item.mood}}</view>
+          <view style="font-size: 24rpx; color: #999">{{item.time}}</view>
+        </view>
+        <view style="font-size: 28rpx; color: #333; margin-bottom: 10rpx">{{item.text || '（无内容）'}}</view>
+        <view style="display: flex; justify-content: space-between; align-items: center">
+          <view>
+            <text style="font-size: 22rpx; color: #666; margin-right: 10rpx">AI: {{item.analysis.aiDetectedEmotion}}</text>
+            <text style="font-size: 22rpx; color: #666">风险: {{item.analysis.riskLevel}}</text>
+          </view>
+          <view>
+            <button style="background: none; color: #4A90E2; font-size: 24rpx; padding: 5rpx; margin: 0" bindtap="editRecord" data-index="{{index}}" catchtap>编辑</button>
+            <button style="background: none; color: #e74c3c; font-size: 24rpx; padding: 5rpx; margin: 0" bindtap="deleteRecord" data-index="{{index}}" catchtap>删除</button>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <view wx:if="{{records.length === 0}}" style="text-align: center; padding: 100rpx 0; color: #999">
+      <text style="font-size: 80rpx; display: block; margin-bottom: 20rpx; opacity: 0.3">📝</text>
+      <text style="font-size: 32rpx; display: block; margin-bottom: 10rpx">暂无记录</text>
+      <text style="font-size: 26rpx; color: #ccc">去记录页面写下您的心情吧～</text>
+    </view>
+
+    <view wx:if="{{isLoading}}" style="text-align: center; padding: 40rpx 0; color: #999; font-size: 28rpx">
+      <text>加载中...</text>
+    </view>
+
+    <view wx:if="{{!hasMore && records.length > 0}}" style="text-align: center; padding: 40rpx 0; color: #999; font-size: 28rpx">
+      <text>没有更多记录了</text>
+    </view>
+  </scroll-view>
+</view>

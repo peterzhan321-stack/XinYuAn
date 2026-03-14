@@ -1,0 +1,170 @@
+<view class="assessment-container">
+  <view class="navigation-section">
+  <!-- 上一题按钮 -->
+  <button 
+    class="nav-button nav-prev {{currentIndex === 0 ? 'nav-disabled' : ''}}"
+    bindtap="goPrev"
+    disabled="{{currentIndex === 0}}"
+  >
+    <view class="nav-icon">←</view>
+    上一题
+  </button>
+  
+  <!-- 下一题按钮 -->
+  <button 
+    wx:if="{{currentIndex < questionSet.length - 1}}"
+    class="nav-button nav-next"
+    bindtap="goNext"
+  >
+    下一题
+    <view class="nav-icon">→</view>
+  </button>
+  
+  <!-- 提交测评按钮（始终显示） -->
+  <button 
+    class="nav-button nav-submit"
+    style="background-color: #2ecc71;"
+    bindtap="submitAssessment"
+  >
+    <view class="submit-icon">✓</view>
+    提交测评
+  </button>
+</view>
+  <!-- 未提交状态：题目界面 -->
+  <view wx:if="{{!isSubmitted}}">
+    <!-- 顶部进度指示器 -->
+    <view class="progress-section">
+      <view class="progress-header">
+        <view class="progress-title">心理测评</view>
+        <view class="progress-text">第 {{currentIndex + 1}} 题 / 共 {{questionSet.length}} 题</view>
+      </view>
+      <view class="progress-bar-bg">
+        <view class="progress-bar-fill" style="width: {{progressWidth}}%;"></view>
+      </view>
+    </view>
+
+    <!-- 题目卡片 -->
+    <view class="question-section">
+      <view class="question-number">Q{{currentIndex + 1}}</view>
+      <view class="question-content">{{questionSet[currentIndex].title}}</view>
+      
+      <!-- 选项列表 -->
+      <view class="options-section">
+        <block wx:for="{{questionSet[currentIndex].options}}" wx:key="index">
+          <view 
+            class="option-item {{answers[questionSet[currentIndex].id] === item ? 'option-selected' : ''}}"
+            bindtap="onAnswerSelect"
+            data-id="{{questionSet[currentIndex].id}}"
+            data-value="{{item}}"
+          >
+            <view class="option-checkbox">
+              <view class="checkbox-inner {{answers[questionSet[currentIndex].id] === item ? 'checkbox-checked' : ''}}"></view>
+            </view>
+            <view class="option-text">{{item}}</view>
+            <view class="option-indicator {{answers[questionSet[currentIndex].id] === item ? 'indicator-visible' : ''}}">✓</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 底部导航按钮 -->
+    <view class="navigation-section">
+      <button 
+        class="nav-button nav-prev {{currentIndex === 0 ? 'nav-disabled' : ''}}"
+        bindtap="goPrev"
+        disabled="{{currentIndex === 0}}"
+      >
+        <view class="nav-icon">←</view>
+        上一题
+      </button>
+      
+      <button 
+        wx:if="{{currentIndex < questionSet.length - 1}}"
+        class="nav-button nav-next"
+        bindtap="goNext"
+      >
+        下一题
+        <view class="nav-icon">→</view>
+      </button>
+      
+      <button 
+        wx:else
+        class="nav-button nav-submit"
+        bindtap="submitAssessment"
+      >
+        <view class="submit-icon">✓</view>
+        提交测评
+      </button>
+    </view>
+  </view>
+
+  <!-- 已提交状态：结果界面 -->
+  <view wx:else class="result-container">
+    <!-- 结果卡片 -->
+    <view class="result-card">
+      <!-- 结果头部 -->
+      <view class="result-header">
+        <view class="result-icon">📊</view>
+        <view class="result-title">测评结果</view>
+        <view class="result-subtitle">基于PHQ-9测评标准</view>
+      </view>
+      
+      <!-- 结果分数 -->
+      <view class="result-score-section">
+        <view class="score-circle">
+          <view class="score-value">{{result.totalScore}}</view>
+          <view class="score-label">总分</view>
+        </view>
+        <view class="score-info">
+          <view class="score-detail">测评时间：{{result.time}}</view>
+          <view class="score-detail">完成题目：{{questionSet.length}}题</view>
+        </view>
+      </view>
+      
+      <!-- 等级标签 -->
+      <view class="level-section">
+        <view class="level-label">评估等级</view>
+        <view class="level-badge level-{{result.level}}">
+          {{result.level}}
+        </view>
+      </view>
+      
+      <!-- 解释说明 -->
+      <view class="explanation-section">
+        <view class="explanation-title">分数说明</view>
+        <view class="explanation-content">
+          <block wx:if="{{result.totalScore <= 4}}">
+            0-4分：无抑郁症状，情绪状态良好
+          </block>
+          <block wx:elif="{{result.totalScore <= 9}}">
+            5-9分：轻度抑郁，建议关注情绪变化
+          </block>
+          <block wx:elif="{{result.totalScore <= 14}}">
+            10-14分：中度抑郁，建议寻求专业帮助
+          </block>
+          <block wx:else>
+            15-27分：重度抑郁，建议立即寻求专业帮助
+          </block>
+        </view>
+      </view>
+      
+      <!-- 建议区域 -->
+      <view class="suggestion-section">
+        <view class="suggestion-title">💡 专家建议</view>
+        <view class="suggestion-content">{{result.suggestion}}</view>
+      </view>
+    </view>
+    
+    <!-- 结果页按钮 -->
+    <view class="result-actions">
+      <button class="result-button action-restart" bindtap="restartAssessment">
+        <view class="button-icon">🔄</view>
+        重新测评
+      </button>
+      <button class="result-button action-history" bindtap="viewHistory">
+        <view class="button-icon">📋</view>
+        历史报告
+      </button>
+    </view>
+  </view>
+</view>

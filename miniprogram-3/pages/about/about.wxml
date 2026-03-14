@@ -1,0 +1,110 @@
+<view class="about-container">
+  <view class="header">
+    <view class="logo-section">
+      <view class="logo">❤️</view>
+      <text class="app-name">心语安</text>
+      <text class="app-slogan">您的心理健康助手</text>
+    </view>
+  </view>
+
+  <view class="content">
+    <!-- 版本信息 -->
+    <view class="card">
+      <view class="card-header">
+        <text class="card-title">应用信息</text>
+      </view>
+      <view class="card-content">
+        <view class="info-item">
+          <text class="info-label">版本号</text>
+          <text class="info-value">V1.0.1</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">更新时间</text>
+          <text class="info-value">2026年3月</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">开发者</text>
+          <text class="info-value">心语安开发团队</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 功能介绍 -->
+    <view class="card">
+      <view class="card-header">
+        <text class="card-title">功能介绍</text>
+      </view>
+      <view class="card-content">
+        <view class="feature-list">
+          <view class="feature-item">
+            <text class="feature-icon">📱</text>
+            <text class="feature-text">情绪记录与分析</text>
+          </view>
+          <view class="feature-item">
+            <text class="feature-icon">📊</text>
+            <text class="feature-text">心理健康评估</text>
+          </view>
+          <view class="feature-item">
+            <text class="feature-icon">🧘</text>
+            <text class="feature-text">放松练习指导</text>
+          </view>
+          <view class="feature-item">
+            <text class="feature-icon">📈</text>
+            <text class="feature-text">情绪趋势报告</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 联系支持 -->
+    <view class="card">
+      <view class="card-header">
+        <text class="card-title">联系支持</text>
+      </view>
+      <view class="card-content">
+        <view class="contact-item" bindtap="contactService">
+          <text class="contact-icon">💬</text>
+          <text class="contact-text">在线客服</text>
+          <text class="contact-arrow">›</text>
+        </view>
+        <view class="contact-item" bindtap="openFeedback">
+          <text class="contact-icon">📝</text>
+          <text class="contact-text">意见反馈</text>
+          <text class="contact-arrow">›</text>
+        </view>
+        <view class="contact-item" bindtap="openWebsite">
+          <text class="contact-icon">🌐</text>
+          <text class="contact-text">官方网站</text>
+          <text class="contact-arrow">›</text>
+        </view>
+        <view class="contact-item" bindtap="sendEmail">
+          <text class="contact-icon">✉️</text>
+          <text class="contact-text">商务合作</text>
+          <text class="contact-arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 关于声明 -->
+    <view class="card">
+      <view class="card-header">
+        <text class="card-title">关于声明</text>
+      </view>
+      <view class="card-content">
+        <text class="declaration-text">
+          “邮你心安”通过虚拟心理辅导员（数字人）、语音与面部表情情感分析、文本情绪识别（网络行为）、行为数据分析，实现对使用者心理状态的风险预警与干预，并在后台进行系统展示，提供可视化动态情绪曲线、风险提醒、干预方案，呈现学生群体的整体心理状态趋势。项目在技术路径、服务模式、应用场景等方面守正创新，分别实现多模态动态感知与融合、筛查-预警-干预的主动闭环，并提供高度聚焦校园的定制化方案。
+        </text>
+        <view class="warning-section">
+          <text class="warning-icon">⚠️</text>
+          <text class="warning-text">紧急情况请拨打心理援助热线：12320</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 版权信息 -->
+    <view class="copyright">
+      <text class="copyright-text">© 2023 心语安 版权所有</text>
+      <text class="copyright-subtext">用心倾听，用爱守护</text>
+    </view>
+  </view>
+</view>

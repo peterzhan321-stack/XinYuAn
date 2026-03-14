@@ -1,0 +1,54 @@
+<view style="padding: 20rpx; min-height: 100vh; background-color: #f5f7fa">
+  <view style="font-size: 44rpx; font-weight: bold; margin-bottom: 30rpx; color: #333">放松练习</view>
+  <view style="font-size: 28rpx; color: #666; margin-bottom: 40rpx">选择适合您的放松方式，缓解压力，提升幸福感</view>
+
+  <view style="margin-bottom: 40rpx">
+    <view style="font-size: 36rpx; font-weight: bold; margin-bottom: 20rpx; color: #333">推荐练习</view>
+    <view style="display: flex; flex-wrap: wrap; gap: 20rpx">
+      <block wx:for="{{exercises}}" wx:key="id">
+        <view 
+          style="width: calc(50% - 10rpx); background: white; border-radius: 20rpx; padding: 30rpx; box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05); border-left: 8rpx solid {{item.color}}"
+          bindtap="startExercise"
+          data-id="{{item.id}}"
+        >
+          <view style="display: flex; align-items: center; margin-bottom: 20rpx">
+            <view style="font-size: 40rpx; margin-right: 20rpx">{{item.icon}}</view>
+            <view style="flex: 1">
+              <view style="font-size: 34rpx; font-weight: bold; color: #333">{{item.title}}</view>
+              <view style="font-size: 24rpx; color: #999; margin-top: 5rpx">{{item.duration}}</view>
+            </view>
+          </view>
+          <view style="font-size: 28rpx; color: #666; line-height: 1.4">{{item.description}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view style="background: white; border-radius: 20rpx; padding: 30rpx; margin-bottom: 40rpx">
+    <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20rpx">
+      <view style="font-size: 36rpx; font-weight: bold; color: #333">练习历史</view>
+      <button style="background: #f0f0f0; color: #666; font-size: 24rpx; padding: 0 20rpx; height: 50rpx; line-height: 50rpx" bindtap="clearHistory" wx:if="{{history.length > 0}}">清空</button>
+    </view>
+    
+    <block wx:for="{{history}}" wx:key="id">
+      <view style="display: flex; justify-content: space-between; align-items: center; padding: 20rpx 0; border-bottom: 1rpx solid #f0f0f0">
+        <view>
+          <view style="font-size: 30rpx; color: #333">{{item.title}}</view>
+          <view style="font-size: 24rpx; color: #999; margin-top: 5rpx">{{item.time}}</view>
+        </view>
+        <view style="background: #e3f2fd; color: #4A90E2; padding: 5rpx 15rpx; border-radius: 15rpx; font-size: 24rpx">{{item.duration}}</view>
+      </view>
+    </block>
+    
+    <view wx:if="{{history.length === 0}}" style="text-align: center; padding: 60rpx 0; color: #ccc">
+      <view style="font-size: 100rpx; margin-bottom: 20rpx">🧘</view>
+      <view style="font-size: 28rpx">暂无练习记录</view>
+      <view style="font-size: 24rpx; margin-top: 10rpx">开始您的第一次放松练习吧</view>
+    </view>
+  </view>
+
+  <view style="background: linear-gradient(135deg, #e3f2fd, #f3e5f5); border-radius: 20rpx; padding: 30rpx; border-left: 8rpx solid #3498db">
+    <view style="font-size: 34rpx; font-weight: bold; color: #2c3e50; margin-bottom: 15rpx">💡 练习建议</view>
+    <view style="font-size: 28rpx; color: #555; line-height: 1.6">每天坚持5-10分钟放松练习，可以有效降低压力水平，提升专注力和情绪稳定性。建议在安静的环境中进行，穿着舒适的衣物。</view>
+  </view>
+</view>

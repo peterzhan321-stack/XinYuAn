@@ -1,0 +1,196 @@
+/* pages/about/about.wxss */.about-container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.header {
+  padding: 60rpx 30rpx 40rpx;
+  background: linear-gradient(135deg, #4A90E2 0%, #2C6FB7 100%);
+  text-align: center;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60rpx;
+  margin-bottom: 20rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.app-name {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10rpx;
+}
+
+.app-slogan {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.content {
+  padding: 30rpx;
+}
+
+.card {
+  background: white;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.card-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-content {
+  padding: 30rpx;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 30rpx;
+  color: #666;
+}
+
+.info-value {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25rpx;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.feature-icon {
+  font-size: 36rpx;
+  width: 60rpx;
+  text-align: center;
+}
+
+.feature-text {
+  font-size: 30rpx;
+  color: #333;
+  flex: 1;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 25rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item:active {
+  background-color: #f8f9fa;
+}
+
+.contact-icon {
+  font-size: 36rpx;
+  width: 60rpx;
+  text-align: center;
+  color: #4A90E2;
+}
+
+.contact-text {
+  font-size: 30rpx;
+  color: #333;
+  flex: 1;
+}
+
+.contact-arrow {
+  font-size: 40rpx;
+  color: #999;
+  font-weight: 100;
+}
+
+.declaration-text {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 30rpx;
+}
+
+.warning-section {
+  display: flex;
+  align-items: center;
+  background: #fff3cd;
+  border: 1rpx solid #ffecb5;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  gap: 15rpx;
+}
+
+.warning-icon {
+  font-size: 32rpx;
+  color: #856404;
+}
+
+.warning-text {
+  font-size: 26rpx;
+  color: #856404;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.copyright {
+  text-align: center;
+  padding: 40rpx 0;
+  color: #999;
+}
+
+.copyright-text {
+  display: block;
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+}
+
+.copyright-subtext {
+  display: block;
+  font-size: 24rpx;
+  color: #bbb;
+}
