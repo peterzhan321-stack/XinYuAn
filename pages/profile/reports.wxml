@@ -1,0 +1,36 @@
+<view>
+  <view style="display:flex;justify-content:space-between;align-items:center;margin:30rpx">
+    <view style="font-size:44rpx;font-weight:bold;color:#333">测评历史报告</view>
+    <button 
+      style="background:#ff4444;color:white;border-radius:20rpx;font-size:24rpx;padding:10rpx 20rpx;height:auto;line-height:1;margin:0" 
+      bindtap="clearHistory" 
+      wx:if="{{reports.length>0}}"
+    >
+      清空历史
+    </button>
+  </view>
+  
+  <view style="background:white;border-radius:20rpx;margin:0 30rpx;overflow:hidden;box-shadow:0 4rpx 12rpx rgba(0,0,0,0.05)">
+    <block wx:for="{{reports}}" wx:key="id">
+      <view 
+        style="padding:30rpx;border-bottom:1rpx solid #f0f0f0;display:flex;align-items:center;justify-content:space-between" 
+        bindtap="viewDetail" 
+        data-index="{{index}}"
+      >
+        <view style="flex:1">
+          <view style="font-size:28rpx;color:#999;margin-bottom:10rpx">{{item.time}}</view>
+          <view style="display:flex;align-items:center;gap:20rpx">
+            <view style="font-size:32rpx;color:#333">分数：<text style="font-weight:bold;color:#4A90E2">{{item.score}}</text>分</view>
+            <view style="font-size:28rpx;color:#666">等级：<text style="display:inline-block;padding:5rpx 15rpx;border-radius:15rpx;font-size:24rpx;font-weight:bold;margin-left:10rpx;background:#e0e0e0">{{item.level}}</text></view>
+          </view>
+        </view>
+        <view style="font-size:60rpx;color:#ccc;margin-left:20rpx">›</view>
+      </view>
+    </block>
+    
+    <view wx:if="{{reports.length===0}}" style="text-align:center;padding:100rpx 0;color:#ccc;display:flex;flex-direction:column;gap:20rpx">
+      <text>暂无测评记录</text>
+      <text>快去完成一次测评吧～</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,173 @@
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="header">
+    <text class="title">应用设置</text>
+    <text class="subtitle">个性化您的应用体验</text>
+  </view>
+
+  <!-- 通知设置 -->
+  <view class="setting-section">
+    <view class="section-title">通知设置</view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">🔔</text>
+        <text class="setting-name">每日提醒</text>
+        <text class="setting-desc">每天定时提醒记录情绪</text>
+      </view>
+      <switch 
+        class="setting-switch"
+        checked="{{settings.dailyReminder}}"
+        bindchange="toggleDailyReminder"
+      />
+    </view>
+    <view class="setting-item" wx:if="{{settings.dailyReminder}}">
+      <view class="setting-info">
+        <text class="setting-icon">🕒</text>
+        <text class="setting-name">提醒时间</text>
+        <text class="setting-desc">{{settings.reminderTime}}</text>
+      </view>
+      <button class="setting-btn" bindtap="setReminderTime">
+        设置
+      </button>
+    </view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">📱</text>
+        <text class="setting-name">推送通知</text>
+        <text class="setting-desc">接收应用推送通知</text>
+      </view>
+      <switch 
+        class="setting-switch"
+        checked="{{settings.pushNotification}}"
+        bindchange="togglePushNotification"
+      />
+    </view>
+  </view>
+
+  <!-- 隐私设置 -->
+  <view class="setting-section">
+    <view class="section-title">隐私设置</view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">🔒</text>
+        <text class="setting-name">数据加密</text>
+        <text class="setting-desc">加密存储您的个人数据</text>
+      </view>
+      <switch 
+        class="setting-switch"
+        checked="{{settings.dataEncryption}}"
+        bindchange="toggleDataEncryption"
+      />
+    </view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">📊</text>
+        <text class="setting-name">匿名统计</text>
+        <text class="setting-desc">允许匿名数据统计</text>
+      </view>
+      <switch 
+        class="setting-switch"
+        checked="{{settings.anonymousStatistics}}"
+        bindchange="toggleAnonymousStatistics"
+      />
+    </view>
+  </view>
+
+  <!-- 界面设置 -->
+  <view class="setting-section">
+    <view class="section-title">界面设置</view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">🌙</text>
+        <text class="setting-name">深色模式</text>
+        <text class="setting-desc">启用深色主题</text>
+      </view>
+      <switch 
+        class="setting-switch"
+        checked="{{settings.darkMode}}"
+        bindchange="toggleDarkMode"
+      />
+    </view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">📏</text>
+        <text class="setting-name">字体大小</text>
+        <text class="setting-desc">{{fontSizeText}}</text>
+      </view>
+      <view class="font-size-slider">
+        <text class="font-size-label">小</text>
+        <slider 
+          class="slider"
+          value="{{settings.fontSize}}"
+          min="12"
+          max="18"
+          step="1"
+          bindchange="setFontSize"
+        />
+        <text class="font-size-label">大</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据管理 -->
+  <view class="setting-section">
+    <view class="section-title">数据管理</view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">💾</text>
+        <text class="setting-name">导出数据</text>
+        <text class="setting-desc">导出您的情绪记录和测评数据</text>
+      </view>
+      <button class="setting-btn" bindtap="exportData">
+        导出
+      </button>
+    </view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">🗑️</text>
+        <text class="setting-name">清理缓存</text>
+        <text class="setting-desc">{{cacheSize}}</text>
+      </view>
+      <button class="setting-btn danger" bindtap="clearCache">
+        清理
+      </button>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="setting-section">
+    <view class="section-title">关于</view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">ℹ️</text>
+        <text class="setting-name">版本信息</text>
+        <text class="setting-desc">v1.0.0</text>
+      </view>
+    </view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">📄</text>
+        <text class="setting-name">用户协议</text>
+      </view>
+      <button class="setting-btn" bindtap="showUserAgreement">
+        查看
+      </button>
+    </view>
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-icon">🔒</text>
+        <text class="setting-name">隐私政策</text>
+      </view>
+      <button class="setting-btn" bindtap="showPrivacyPolicy">
+        查看
+      </button>
+    </view>
+  </view>
+
+  <!-- 重置设置 -->
+  <view class="reset-section">
+    <button class="reset-btn" bindtap="resetSettings">
+      重置所有设置
+    </button>
+  </view>
+</view>

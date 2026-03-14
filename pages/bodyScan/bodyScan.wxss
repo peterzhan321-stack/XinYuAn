@@ -1,0 +1,239 @@
+.body-scan-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40rpx 30rpx 20rpx;
+  position: relative;
+}
+
+.title-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-title {
+  font-size: 48rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+  color: #ffffff;
+}
+
+.sub-title {
+  font-size: 24rpx;
+  opacity: 0.85;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.close-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  font-weight: 300;
+  color: #ffffff;
+}
+
+.close-btn:active {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30rpx 40rpx;
+}
+
+.visualization {
+  display: flex;
+  justify-content: center;
+  margin: 40rpx 0 30rpx;
+}
+
+.body-diagram {
+  width: 300rpx;
+  height: 400rpx;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20rpx;
+}
+
+.body-area {
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  border: 2rpx solid transparent;
+}
+
+.body-area.active {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: #ffffff;
+  transform: scale(1.2);
+  box-shadow: 0 0 20rpx rgba(255, 255, 255, 0.5);
+}
+
+.area-label {
+  font-size: 20rpx;
+  color: #ffffff;
+  text-align: center;
+}
+
+.instruction-section {
+  margin: 30rpx 0;
+  padding: 30rpx;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20rpx;
+  text-align: center;
+}
+
+.instruction-text {
+  font-size: 32rpx;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.stats-section {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20rpx;
+  padding: 30rpx 20rpx;
+  margin-bottom: 40rpx;
+  backdrop-filter: blur(10rpx);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  opacity: 0.8;
+  margin-bottom: 10rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.stat-value {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.controls-section {
+  margin-bottom: 40rpx;
+}
+
+.control-buttons {
+  margin-top: 20rpx;
+}
+
+.button-group {
+  display: flex;
+  gap: 30rpx;
+}
+
+.control-button {
+  flex: 1;
+  padding: 30rpx 0;
+  text-align: center;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.start-button {
+  background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+  color: #ffffff;
+}
+
+.start-button:active {
+  background: linear-gradient(135deg, #43A047 0%, #7CB342 100%);
+  transform: translateY(2rpx);
+}
+
+.start-button.pause {
+  background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
+}
+
+.reset-button {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.reset-button:active {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(2rpx);
+}
+
+.guide-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  backdrop-filter: blur(10rpx);
+}
+
+.guide-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  margin-bottom: 25rpx;
+  color: #ffffff;
+  display: block;
+}
+
+.guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.guide-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15rpx;
+}
+
+.guide-number {
+  width: 40rpx;
+  height: 40rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #ffffff;
+  flex-shrink: 0;
+  margin-top: 2rpx;
+}
+
+.guide-text {
+  font-size: 26rpx;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  flex: 1;
+}

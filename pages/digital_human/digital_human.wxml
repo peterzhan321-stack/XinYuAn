@@ -1,0 +1,93 @@
+<view class="digital-human-container">
+  <!-- 顶部导航 -->
+  <view class="nav-header">
+    <view class="nav-title">数字人辅导员</view>
+    <view class="nav-actions">
+      <button class="refresh-btn" bindtap="refreshDigitalHuman">
+        <text class="refresh-icon">🔄</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 数字人展示区 -->
+  <view class="digital-human-section">
+    <view class="digital-human-inner">
+      <view class="digital-human-avatar">
+        <text class="avatar-icon">🤖</text>
+      </view>
+      <view class="digital-human-info">
+        <view class="digital-human-name">小语</view>
+        <view class="digital-human-title">心理辅导员</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 对话区域 -->
+  <view class="chat-container">
+    <view class="chat-messages">
+      <block wx:for="{{messages}}" wx:key="id">
+        <!-- 机器人消息 -->
+        <view wx:if="{{item.type === 'robot'}}" class="message-item robot-message">
+          <view class="message-avatar robot-avatar">
+            <text class="avatar-icon">🤖</text>
+          </view>
+          <view class="message-content robot-content">
+            {{item.content}}
+          </view>
+        </view>
+        
+        <!-- 用户消息 -->
+        <view wx:else class="message-item user-message">
+          <view class="message-content user-content">
+            {{item.content}}
+          </view>
+          <view class="message-avatar user-avatar">
+            <text class="avatar-icon">👤</text>
+          </view>
+        </view>
+      </block>
+      
+      <!-- 正在输入提示 -->
+      <view wx:if="{{isTyping}}" class="message-item robot-message">
+        <view class="message-avatar robot-avatar">
+          <text class="avatar-icon">🤖</text>
+        </view>
+        <view class="message-content robot-content typing">
+          <text class="typing-dot"></text>
+          <text class="typing-dot"></text>
+          <text class="typing-dot"></text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 预设问题 -->
+    <view class="preset-questions">
+      <view class="preset-title">快速提问：</view>
+      <view class="preset-list">
+        <block wx:for="{{presetQuestions}}" wx:key="index">
+          <view 
+            class="preset-item" 
+            bindtap="onPresetQuestionTap"
+            data-question="{{item}}"
+          >
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 输入区域 -->
+    <view class="input-section">
+      <input 
+        class="chat-input" 
+        placeholder="输入你的问题..." 
+        value="{{inputValue}}"
+        bindinput="onInputChange"
+        bindconfirm="sendMessage"
+      />
+      <button class="send-btn" bindtap="sendMessage">
+        <text class="send-icon">发送</text>
+      </button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="header">
+    <view class="welcome">
+      <text class="greeting">您好！</text>
+      <text class="date">{{currentDate}}</text>
+    </view>
+    <view class="mood-summary">
+      <text class="summary-text">今日心情指数</text>
+      <view class="mood-score">
+        <text class="score">{{moodScore}}</text>
+        <text class="score-label">/100</text>
+      </view>
+      <text class="summary-desc">状态良好，继续保持！</text>
+    </view>
+  </view>
+  <view class="quick-actions">
+    <view class="action-card" bindtap="goToMoodRecord">
+      <view class="action-icon">📝</view>
+      <text class="action-text">记录心情</text>
+    </view>
+    <view class="action-card" bindtap="goToAssessment">
+      <view class="action-icon">📊</view>
+      <text class="action-text">心理测评</text>
+    </view>
+    <view class="action-card" bindtap="goToIntervention">
+      <view class="action-icon">🧘</view>
+      <text class="action-text">放松练习</text>
+    </view>
+  </view>
+  <view class="recent-section">
+    <view class="section-header">
+      <text class="section-title">最近记录</text>
+      <text class="see-more" bindtap="viewAllRecords">查看全部</text>
+    </view>
+    <view class="record-list">
+      <block wx:for="{{recentRecords}}" wx:key="id">
+        <view class="record-item">
+          <view class="record-mood">{{item.mood}}</view>
+          <view class="record-content">{{item.text}}</view>
+          <view class="record-time">{{item.time}}</view>
+        </view>
+      </block>
+      <view wx:if="{{recentRecords.length === 0}}" class="empty-tip">
+        <text>暂无记录，开始记录您的心情吧～</text>
+      </view>
+    </view>
+  </view>
+  <view class="tips-section">
+    <view class="section-header">
+      <text class="section-title">每日心理小贴士</text>
+    </view>
+    <view class="tip-card">
+      <text class="tip-title">正念呼吸法</text>
+      <text class="tip-content">每天花3-5分钟专注于呼吸，可以有效缓解焦虑情绪。尝试深吸4秒，屏息2秒，慢呼6秒。</text>
+    </view>
+  </view>
+</view>

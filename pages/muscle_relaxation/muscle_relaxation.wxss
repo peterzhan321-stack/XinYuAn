@@ -1,0 +1,185 @@
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 20rpx;
+}
+
+/* 页面标题 */
+.header {
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 进度条 */
+.progress-section {
+  margin-bottom: 40rpx;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12rpx;
+  background-color: #e0e0e0;
+  border-radius: 6rpx;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4A90E2, #5C6BC0);
+  border-radius: 6rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+}
+
+/* 计时器 */
+.timer-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.timer {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #4A90E2;
+  background-color: white;
+  padding: 30rpx 60rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+/* 指导语 */
+.instruction-section {
+  margin-bottom: 40rpx;
+}
+
+.instruction-card {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.instruction-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.instruction-content {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 肌肉群图示 */
+.muscle-group-section {
+  margin-bottom: 40rpx;
+}
+
+.muscle-group-card {
+  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.muscle-group-icon {
+  font-size: 100rpx;
+  margin-bottom: 20rpx;
+}
+
+.muscle-group-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 控制按钮 */
+.control-section {
+  margin-bottom: 40rpx;
+}
+
+.primary-btn {
+  width: 100%;
+  height: 80rpx;
+  background: linear-gradient(135deg, #4A90E2, #5C6BC0);
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 40rpx;
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(74, 144, 226, 0.3);
+}
+
+.control-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+
+.secondary-btn {
+  flex: 1;
+  height: 80rpx;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 32rpx;
+  border-radius: 40rpx;
+  border: none;
+}
+
+.danger-btn {
+  flex: 1;
+  height: 80rpx;
+  background-color: #f44336;
+  color: white;
+  font-size: 32rpx;
+  border-radius: 40rpx;
+  border: none;
+}
+
+/* 练习提示 */
+.tips-section {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.tips-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.tips-content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}

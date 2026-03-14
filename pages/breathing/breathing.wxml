@@ -1,0 +1,95 @@
+<view class="breathing-container">
+  <view class="header">
+    <view class="title-section">
+      <text class="main-title">正念呼吸</text>
+      <text class="sub-title">跟随引导，专注当下</text>
+    </view>
+    <view class="close-btn" bindtap="goBack">
+      <text>×</text>
+    </view>
+  </view>
+
+  <view class="main-content">
+    <view class="breathing-animation">
+      <view class="circle-container">
+        <view class="outer-circle" style="transform: scale({{circleScale}}); opacity: {{circleOpacity}};">
+          <view class="middle-circle" style="transform: scale({{circleScale * 0.8}});">
+            <view class="inner-circle" style="transform: scale({{circleScale * 0.6}});">
+              <text class="breath-text">{{currentPhase}}</text>
+              <text class="time-text">{{phaseTime}}秒</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <view class="instruction-text">
+        <text>{{instructionText}}</text>
+      </view>
+    </view>
+
+    <view class="stats-section">
+      <view class="stat-item">
+        <text class="stat-label">练习时间</text>
+        <text class="stat-value">{{formatTime(elapsedTime)}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">呼吸次数</text>
+        <text class="stat-value">{{breathCount}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">当前节奏</text>
+        <text class="stat-value">{{rhythmText}}</text>
+      </view>
+    </view>
+
+    <view class="controls-section">
+      <view class="breath-rhythm">
+        <text class="rhythm-label">呼吸节奏：</text>
+        <view class="rhythm-options">
+          <view class="rhythm-option {{currentRhythm === 1 ? 'active' : ''}}" bindtap="setRhythm" data-rhythm="1">
+            <text>舒缓 (4-2-4-2)</text>
+          </view>
+          <view class="rhythm-option {{currentRhythm === 2 ? 'active' : ''}}" bindtap="setRhythm" data-rhythm="2">
+            <text>平衡 (4-4-4-4)</text>
+          </view>
+          <view class="rhythm-option {{currentRhythm === 3 ? 'active' : ''}}" bindtap="setRhythm" data-rhythm="3">
+            <text>放松 (4-7-8)</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="control-buttons">
+        <view class="button-group">
+          <view class="control-button start-button {{isActive ? 'active' : ''}}" bindtap="togglePractice">
+            <text>{{isActive ? '暂停练习' : '开始练习'}}</text>
+          </view>
+          <view class="control-button reset-button" bindtap="resetPractice">
+            <text>重新开始</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="guide-section">
+      <text class="guide-title">练习指南</text>
+      <view class="guide-list">
+        <view class="guide-item">
+          <text class="guide-number">1</text>
+          <text class="guide-text">找一个安静舒适的地方坐下或躺下</text>
+        </view>
+        <view class="guide-item">
+          <text class="guide-number">2</text>
+          <text class="guide-text">跟随圆圈动画的节奏进行呼吸</text>
+        </view>
+        <view class="guide-item">
+          <text class="guide-number">3</text>
+          <text class="guide-text">圆圈放大时吸气，缩小时呼气</text>
+        </view>
+        <view class="guide-item">
+          <text class="guide-number">4</text>
+          <text class="guide-text">保持自然呼吸，不要过度用力</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

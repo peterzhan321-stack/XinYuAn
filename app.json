@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mood_record/mood_record",
+    "pages/assessment/assessment",
+    "pages/digital_human/digital_human",
+    "pages/profile/profile",
+    "pages/profile/records",
+    "pages/profile/reports",
+    "pages/relaxation/index",
+    "pages/relaxation/player",
+    "pages/breathing/breathing",
+    "pages/bodyScan/bodyScan",
+    "pages/muscle_relaxation/muscle_relaxation",
+    "pages/quick_meditation/quick_meditation",
+    "pages/settings/settings",
+    "pages/about/about"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4A90E2",
+    "navigationBarTitleText": "心语安",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#4A90E2",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/mood_record/mood_record",
+        "text": "记录"
+      },
+      {
+        "pagePath": "pages/assessment/assessment",
+        "text": "测评"
+      },
+      {
+        "pagePath": "pages/digital_human/digital_human",
+        "text": "数字人"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

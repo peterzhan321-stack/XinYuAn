@@ -1,0 +1,155 @@
+.container {
+  padding: 30rpx;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 30rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  color: white;
+}
+.welcome {
+  margin-bottom: 30rpx;
+}
+.greeting {
+  font-size: 48rpx;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10rpx;
+}
+.date {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+.mood-summary {
+  text-align: center;
+}
+.summary-text {
+  font-size: 32rpx;
+  display: block;
+  margin-bottom: 20rpx;
+}
+.mood-score {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 20rpx;
+}
+.score {
+  font-size: 80rpx;
+  font-weight: bold;
+}
+.score-label {
+  font-size: 36rpx;
+  opacity: 0.8;
+}
+.summary-desc {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+.quick-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+.action-card {
+  flex: 1;
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: 0 10rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+.action-card:active {
+  transform: scale(0.98);
+}
+.action-icon {
+  font-size: 60rpx;
+  margin-bottom: 20rpx;
+}
+.action-text {
+  font-size: 28rpx;
+  color: #333;
+}
+.recent-section {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+.see-more {
+  font-size: 28rpx;
+  color: #4A90E2;
+}
+.record-list {
+  margin-top: 20rpx;
+}
+.record-item {
+  border-bottom: 1rpx solid #eee;
+  padding: 25rpx 0;
+}
+.record-item:last-child {
+  border-bottom: none;
+}
+.record-mood {
+  font-size: 32rpx;
+  color: #4A90E2;
+  margin-bottom: 10rpx;
+}
+.record-content {
+  font-size: 30rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.record-time {
+  font-size: 26rpx;
+  color: #999;
+}
+.empty-tip {
+  text-align: center;
+  padding: 60rpx 0;
+  color: #ccc;
+}
+.tips-section {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+.tip-card {
+  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+  border-radius: 15rpx;
+  padding: 30rpx;
+  border-left: 8rpx solid #3498db;
+}
+.tip-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 15rpx;
+}
+.tip-content {
+  font-size: 30rpx;
+  color: #555;
+  line-height: 1.6;
+}

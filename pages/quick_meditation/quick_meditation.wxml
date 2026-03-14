@@ -1,0 +1,109 @@
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="header">
+    <text class="title">快速冥想</text>
+    <text class="subtitle">快速平静，随时可用的冥想练习</text>
+  </view>
+
+  <!-- 冥想主题选择 -->
+  <view class="theme-section" wx:if="{{!isRunning}}">
+    <text class="section-title">选择冥想主题</text>
+    <view class="theme-list">
+      <view 
+        wx:for="{{themes}}" 
+        wx:key="id"
+        class="theme-item {{selectedTheme === item.id ? 'selected' : ''}}"
+        bindtap="selectTheme"
+        data-id="{{item.id}}"
+      >
+        <text class="theme-icon">{{item.icon}}</text>
+        <text class="theme-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 时间选择 -->
+  <view class="time-section" wx:if="{{!isRunning}}">
+    <text class="section-title">选择时长</text>
+    <view class="time-options">
+      <view 
+        wx:for="{{timeOptions}}" 
+        wx:key="value"
+        class="time-option {{selectedTime === item.value ? 'selected' : ''}}"
+        bindtap="selectTime"
+        data-value="{{item.value}}"
+      >
+        {{item.label}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 背景音效选择 -->
+  <view class="sound-section" wx:if="{{!isRunning}}">
+    <text class="section-title">背景音效</text>
+    <view class="sound-list">
+      <view 
+        wx:for="{{sounds}}" 
+        wx:key="id"
+        class="sound-item {{selectedSound === item.id ? 'selected' : ''}}"
+        bindtap="selectSound"
+        data-id="{{item.id}}"
+      >
+        <text class="sound-icon">{{item.icon}}</text>
+        <text class="sound-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 冥想界面 -->
+  <view class="meditation-section" wx:if="{{isRunning}}">
+    <!-- 计时器 -->
+    <view class="timer-section">
+      <text class="timer">{{formattedTime}}</text>
+    </view>
+
+    <!-- 冥想主题 -->
+    <view class="current-theme">
+      <text class="theme-icon large">{{currentTheme.icon}}</text>
+      <text class="theme-name">{{currentTheme.name}}</text>
+    </view>
+
+    <!-- 指导语 -->
+    <view class="instruction-section">
+      <view class="instruction-card">
+        <text class="instruction-content">{{currentInstruction}}</text>
+      </view>
+    </view>
+
+    <!-- 进度环 -->
+    <view class="progress-ring">
+      <canvas canvas-id="progressCanvas" class="progress-canvas"></canvas>
+    </view>
+  </view>
+
+  <!-- 控制按钮 -->
+  <view class="control-section">
+    <button wx:if="{{!isRunning}}" class="primary-btn" bindtap="startMeditation">
+      开始冥想
+    </button>
+    <view wx:else class="control-buttons">
+      <button class="secondary-btn" bindtap="pauseMeditation">
+        {{isPaused ? '继续' : '暂停'}}
+      </button>
+      <button class="danger-btn" bindtap="stopMeditation">
+        结束
+      </button>
+    </view>
+  </view>
+
+  <!-- 练习提示 -->
+  <view class="tips-section">
+    <text class="tips-title">💡 练习提示</text>
+    <text class="tips-content">
+      1. 找一个安静的地方
+      2. 保持舒适的坐姿
+      3. 跟随指导语专注呼吸
+      4. 如果思绪飘走，温柔地将注意力拉回
+    </text>
+  </view>
+</view>

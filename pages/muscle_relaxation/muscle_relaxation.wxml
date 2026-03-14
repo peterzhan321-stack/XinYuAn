@@ -1,0 +1,62 @@
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="header">
+    <text class="title">渐进式肌肉放松</text>
+    <text class="subtitle">通过逐步收紧和放松肌肉群，释放身体压力</text>
+  </view>
+
+  <!-- 进度条 -->
+  <view class="progress-section">
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progress}}%"></view>
+    </view>
+    <text class="progress-text">{{currentStep}} / {{totalSteps}} 步骤</text>
+  </view>
+
+  <!-- 计时器 -->
+  <view class="timer-section">
+    <text class="timer">{{formattedTime}}</text>
+  </view>
+
+  <!-- 指导语 -->
+  <view class="instruction-section">
+    <view class="instruction-card">
+      <text class="instruction-title">{{currentInstruction.title}}</text>
+      <text class="instruction-content">{{currentInstruction.content}}</text>
+    </view>
+  </view>
+
+  <!-- 肌肉群图示 -->
+  <view class="muscle-group-section">
+    <view class="muscle-group-card">
+      <text class="muscle-group-icon">{{currentInstruction.icon}}</text>
+      <text class="muscle-group-name">{{currentInstruction.muscleGroup}}</text>
+    </view>
+  </view>
+
+  <!-- 控制按钮 -->
+  <view class="control-section">
+    <button wx:if="{{!isRunning}}" class="primary-btn" bindtap="startExercise">
+      开始练习
+    </button>
+    <view wx:else class="control-buttons">
+      <button class="secondary-btn" bindtap="pauseExercise">
+        {{isPaused ? '继续' : '暂停'}}
+      </button>
+      <button class="danger-btn" bindtap="stopExercise">
+        结束
+      </button>
+    </view>
+  </view>
+
+  <!-- 练习提示 -->
+  <view class="tips-section">
+    <text class="tips-title">💡 练习提示</text>
+    <text class="tips-content">
+      1. 找一个安静舒适的地方
+      2. 穿着宽松的衣物
+      3. 按照指导语逐步收紧和放松肌肉
+      4. 专注于肌肉的紧张和放松感受
+    </text>
+  </view>
+</view>
