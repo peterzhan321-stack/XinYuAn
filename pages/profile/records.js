@@ -4,7 +4,9 @@ Page({
     filteredRecords: [],
     searchKeyword: '',
     isLoading: false,
-    hasMore: true
+    hasMore: true,
+    expandedRecordId: null,
+    editingNote: ''
   },
 
   onLoad: function() {
@@ -71,7 +73,7 @@ Page({
     const record = this.data.records[index];
     wx.showModal({
       title: record.mood + ' - ' + record.time,
-      content: (record.text || '（无内容）') + '\n\n分析结果：' + (record.analysis ? record.analysis.aiDetectedEmotion : '未分析'),
+      content: (record.text || '（无内容）') + '\n\n分析结果：' + (record.analysis ? record.analysis.aiDetectedEmotion : '未分析') + '\n\n备注：' + (record.note || '无'),
       showCancel: false
     });
   },
@@ -135,5 +137,48 @@ Page({
       title: '导出功能开发中',
       icon: 'none'
     });
+  },
+
+  toggleExpandRecord: function(e) {
+    const recordId = e.currentTarget.dataset.id;
+    const record = this.data.records.find(r => r.id === recordId);
+    
+    if (this.data.expandedRecordId === recordId) {
+      this.setData({
+        expandedRecordId: null
+      });
+    } else {
+      this.setData({
+        expandedRecordId: recordId,
+        editingNote: record.note || ''
+      });
+    }
+  },
+
+  onNoteInput: function(e) {
+    this.setData({
+      editingNote: e.detail.value
+    });
+  },
+
+  saveNote: function(e) {
+    const recordId = e.currentTarget.dataset.id;
+    const note = this.data.editingNote;
+    
+    let allRecords = wx.getStorageSync('mood_records') || [];
+    const recordIndex = allRecords.findIndex(r => r.id === recordId);
+    
+    if (recordIndex !== -1) {
+      allRecords[recordIndex].note = note;
+      wx.setStorageSync('mood_records', allRecords);
+      this.loadRecords();
+      this.setData({
+        expandedRecordId: null
+      });
+      wx.showToast({
+        title: '备注已保存',
+        icon: 'success'
+      });
+    }
   }
 })

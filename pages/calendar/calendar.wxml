@@ -1,0 +1,55 @@
+<view style="padding: 20rpx; min-height: 100vh; background-color: #f5f7fa">
+  <view style="background: white; padding: 20rpx; border-radius: 10rpx; margin-bottom: 20rpx; text-align: center">
+    <text style="font-size: 32rpx; font-weight: bold; color: #333">{{currentMonth}}</text>
+  </view>
+
+  <view style="background: white; padding: 20rpx; border-radius: 10rpx">
+    <!-- 星期标题 -->
+    <view style="display: flex; margin-bottom: 10rpx">
+      <view style="flex: 1; text-align: center; font-size: 24rpx; color: #666">日</view>
+      <view style="flex: 1; text-align: center; font-size: 24rpx; color: #666">一</view>
+      <view style="flex: 1; text-align: center; font-size: 24rpx; color: #666">二</view>
+      <view style="flex: 1; text-align: center; font-size: 24rpx; color: #666">三</view>
+      <view style="flex: 1; text-align: center; font-size: 24rpx; color: #666">四</view>
+      <view style="flex: 1; text-align: center; font-size: 24rpx; color: #666">五</view>
+      <view style="flex: 1; text-align: center; font-size: 24rpx; color: #666">六</view>
+    </view>
+
+    <!-- 日历网格 -->
+    <view style="display: flex; flex-wrap: wrap">
+      <block wx:for="{{calendarDays}}" wx:key="index">
+        <view 
+          style="width: 14.28%; height: 80rpx; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 10rpx" 
+          bindtap="onDayTap" 
+          data-dateStr="{{item.dateStr}}"
+        >
+          <view style="font-size: 24rpx; margin-bottom: 5rpx; color: {{item.isCurrentMonth ? '#333' : '#ccc'}}">
+            {{item.date}}
+          </view>
+          <view 
+            style="width: 40rpx; height: 40rpx; border-radius: 50%; background-color: {{getActivityColor(getActivityLevel(item.dateStr))}}; display: flex; align-items: center; justify-content: center"
+          >
+            <text style="font-size: 20rpx; color: {{item.isToday ? '#4A90E2' : '#333'}}">
+              {{item.date}}
+            </text>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 图例 -->
+    <view style="margin-top: 30rpx; display: flex; align-items: center; justify-content: center">
+      <text style="font-size: 24rpx; color: #666; margin-right: 15rpx">活跃度：</text>
+      <view style="display: flex; align-items: center">
+        <view style="width: 30rpx; height: 30rpx; border-radius: 4rpx; background-color: #ebedf0; margin-right: 10rpx"></view>
+        <text style="font-size: 22rpx; color: #999; margin-right: 15rpx">无</text>
+        <view style="width: 30rpx; height: 30rpx; border-radius: 4rpx; background-color: #c6e48b; margin-right: 10rpx"></view>
+        <text style="font-size: 22rpx; color: #999; margin-right: 15rpx">低</text>
+        <view style="width: 30rpx; height: 30rpx; border-radius: 4rpx; background-color: #7bc96f; margin-right: 10rpx"></view>
+        <text style="font-size: 22rpx; color: #999; margin-right: 15rpx">中</text>
+        <view style="width: 30rpx; height: 30rpx; border-radius: 4rpx; background-color: #239a3b; margin-right: 10rpx"></view>
+        <text style="font-size: 22rpx; color: #999">高</text>
+      </view>
+    </view>
+  </view>
+</view>

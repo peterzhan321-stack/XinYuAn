@@ -427,7 +427,8 @@ Page({
       time: new Date().toLocaleString(),
       analysis: this.data.analysisResult,
       imageList: this.data.imageList,
-      audioDuration: this.data.audioDuration
+      audioDuration: this.data.audioDuration,
+      note: ''
     };
 
     let allRecords = wx.getStorageSync('mood_records') || [];

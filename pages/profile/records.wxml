@@ -19,7 +19,7 @@
     </view>
 
     <block wx:for="{{records}}" wx:key="id">
-      <view style="background: white; border-radius: 10rpx; padding: 20rpx; margin-bottom: 15rpx; border: 1rpx solid #eee" bindtap="viewDetail" data-index="{{index}}">
+      <view style="background: white; border-radius: 10rpx; padding: 20rpx; margin-bottom: 15rpx; border: 1rpx solid #eee" bindtap="toggleExpandRecord" data-id="{{item.id}}">
         <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10rpx">
           <view style="background: #4A90E2; color: white; padding: 5rpx 15rpx; border-radius: 15rpx; font-size: 24rpx">{{item.mood}}</view>
           <view style="font-size: 24rpx; color: #999">{{item.time}}</view>
@@ -34,6 +34,26 @@
             <button style="background: none; color: #4A90E2; font-size: 24rpx; padding: 5rpx; margin: 0" bindtap="editRecord" data-index="{{index}}" catchtap>编辑</button>
             <button style="background: none; color: #e74c3c; font-size: 24rpx; padding: 5rpx; margin: 0" bindtap="deleteRecord" data-index="{{index}}" catchtap>删除</button>
           </view>
+        </view>
+        
+        <!-- 今日小结输入框 -->
+        <view wx:if="{{expandedRecordId === item.id}}" style="margin-top: 20rpx; padding-top: 20rpx; border-top: 1rpx solid #eee">
+          <view style="font-size: 26rpx; color: #666; margin-bottom: 10rpx">今日小结</view>
+          <textarea 
+            placeholder="添加备注..." 
+            value="{{editingNote}}" 
+            bindinput="onNoteInput" 
+            style="width: 100%; height: 150rpx; background: #f8f9fa; border-radius: 10rpx; padding: 15rpx; font-size: 26rpx; margin-bottom: 15rpx; resize: none"
+          />
+          <view style="display: flex; justify-content: flex-end">
+            <button style="background: #4A90E2; color: white; font-size: 24rpx; padding: 0 20rpx; height: 50rpx; line-height: 50rpx" bindtap="saveNote" data-id="{{item.id}}" catchtap>保存</button>
+          </view>
+        </view>
+        
+        <!-- 显示已添加的备注 -->
+        <view wx:if="{{item.note && expandedRecordId !== item.id}}" style="margin-top: 15rpx; padding: 15rpx; background: #f8f9fa; border-radius: 8rpx">
+          <view style="font-size: 24rpx; color: #666; margin-bottom: 5rpx">备注</view>
+          <view style="font-size: 26rpx; color: #333">{{item.note}}</view>
         </view>
       </view>
     </block>
